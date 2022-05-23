@@ -43,10 +43,10 @@ class AnimeServiceTest {
     void shouldUpdateAnimeNameInDatabase() {
         Anime animeSaved = new Anime("one piece", "master piece", 1000);
         Optional<Anime> animeOpt = Optional.of(animeSaved);
+
         when(animeRepository.findByName(Mockito.anyString())).thenReturn(animeOpt);
 
         AnimeDto anime = new AnimeDto("one piece", "master piece", 1000);
-
         AnimeDto result = animeService.save(anime);
 
         Assertions.assertEquals("one piece", result.name());
