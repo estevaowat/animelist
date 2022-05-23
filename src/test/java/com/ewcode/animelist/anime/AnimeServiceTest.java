@@ -53,12 +53,5 @@ class AnimeServiceTest {
         Assertions.assertEquals("master piece", result.status());
         Assertions.assertEquals(1000, result.episodes());
     }
-
-    @Test
-    @DisplayName("should ...")
-    void name() {
-        int result = animeService.sum(1);
-        Assertions.assertEquals(2, result);
-
-    }
+    
 }
