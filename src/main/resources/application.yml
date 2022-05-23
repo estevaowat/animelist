@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:~/data/anime
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    spring:
+      jpa:
+        database: org.hibernate.dialect.H2Dialect
+  sql:
+    init:
+      mode: always
