@@ -28,12 +28,12 @@ class AnimeServiceTest {
     @Test
     @DisplayName("should insert a new anime in database")
     void shouldInsertNewAnimeInDatabase() {
-        AnimeDto anime = new AnimeDto("one piece", "master piece", 1000);
+        AnimeDto anime = new AnimeDto("One piece", "watched", 1000, "Adventure", "Shonen", 10.0);
 
         AnimeDto result = animeService.save(anime);
 
-        Assertions.assertEquals("one piece", result.name());
-        Assertions.assertEquals("master piece", result.status());
+        Assertions.assertEquals("One piece", result.name());
+        Assertions.assertEquals("watched", result.status());
         Assertions.assertEquals(1000, result.episodes());
 
     }
@@ -41,17 +41,22 @@ class AnimeServiceTest {
     @Test
     @DisplayName("should update anime in database")
     void shouldUpdateAnimeNameInDatabase() {
-        Anime animeSaved = new Anime("one piece", "master piece", 1000);
-        Optional<Anime> animeOpt = Optional.of(animeSaved);
+        Anime animeSaved = new Anime();
 
+        animeSaved.setName("one piece")
+                .setStatus("master piece")
+                .setEpisodes(1000)
+                .setType("Adventure")
+                .setGenre("Shonen")
+                .setRating("10");
+
+        Optional<Anime> animeOpt = Optional.of(animeSaved);
         when(animeRepository.findByName(Mockito.anyString())).thenReturn(animeOpt);
 
-        AnimeDto anime = new AnimeDto("one piece", "master piece", 1000);
+        AnimeDto anime = new AnimeDto("One piece", "watched", 1000, "Adventure", "Shonen", 10.0);
         AnimeDto result = animeService.save(anime);
-
-        Assertions.assertEquals("one piece", result.name());
-        Assertions.assertEquals("master piece", result.status());
+        Assertions.assertEquals("One piece", result.name());
+        Assertions.assertEquals("watched", result.status());
         Assertions.assertEquals(1000, result.episodes());
     }
-    
 }

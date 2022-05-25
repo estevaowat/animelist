@@ -35,8 +35,10 @@ public class AnimeService {
         return animeDto;
     }
 
-    public int sum(int value) {
-        return value + 1;
+    @Transactional
+    public void batchSave() {
+        
     }
+
 
 }
