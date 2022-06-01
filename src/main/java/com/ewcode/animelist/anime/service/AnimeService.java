@@ -5,6 +5,7 @@ import com.ewcode.animelist.anime.entities.Anime;
 import com.ewcode.animelist.anime.repositories.IAnimeRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -13,7 +14,7 @@ import java.util.Optional;
 @Service
 public class AnimeService {
 
-    private IAnimeRepository animeRepository;
+    private final IAnimeRepository animeRepository;
 
     @Autowired
     public AnimeService(IAnimeRepository animeRepository) {
@@ -35,10 +36,7 @@ public class AnimeService {
         return animeDto;
     }
 
-    @Transactional
-    public void batchSave() {
-        
+    public Page<AnimeDto> getPageable(int page, int size) {
+        return null;
     }
-
-
 }
